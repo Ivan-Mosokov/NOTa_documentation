@@ -1,0 +1,138 @@
+---
+id: OperationList
+name: OperationList
+version: 0.0.1
+identifier: operationId
+summary: Список технологических операций для техкарты. Каждая операция описывает конкретный технологический процесс с указанием оборудования, продолжительности и других параметров.
+properties:
+  - name: operationId
+    type: UUID
+    required: true
+    description: Идентификатор технологической операции
+  - name: techCardId
+    type: UUID
+    required: true
+    description: Идентификатор техкарты, к которой относится операция
+  - name: operationNumber
+    type: integer
+    required: true
+    description: Порядковый номер операции в техкарте
+  - name: operationName
+    type: string
+    required: true
+    description: Название технологической операции
+  - name: operationDescription
+    type: string
+    required: false
+    description: Подробное описание операции
+  - name: operationType
+    type: string
+    required: true
+    description: Тип технологической операции
+    enum: ['Механическая обработка', 'Сборка', 'Сварка', 'Покраска', 'Контроль', 'Упаковка', 'Другое']
+  - name: operationGroup
+    type: string
+    required: true
+    description: Группа операций (например, "Подготовительные", "Основные", "Отделочные")
+  - name: equipmentId
+    type: UUID
+    required: true
+    description: Идентификатор оборудования для выполнения операции
+  - name: equipmentName
+    type: string
+    required: true
+    description: Название оборудования
+  - name: workplaceId
+    type: UUID
+    required: true
+    description: Идентификатор рабочего места
+  - name: workplaceName
+    type: string
+    required: true
+    description: Название рабочего места
+  - name: duration
+    type: decimal
+    required: true
+    description: Продолжительность операции в минутах
+  - name: setupTime
+    type: decimal
+    required: true
+    description: Время наладки оборудования в минутах
+  - name: cycleTime
+    type: decimal
+    required: true
+    description: Цикловое время операции в минутах
+  - name: laborHours
+    type: decimal
+    required: true
+    description: Трудоемкость операции в часах
+  - name: costPerHour
+    type: decimal
+    required: true
+    description: Стоимость часа работы оборудования
+  - name: operationCost
+    type: decimal
+    required: true
+    description: Стоимость операции
+  - name: skillLevel
+    type: string
+    required: true
+    description: Требуемый уровень квалификации исполнителя
+    enum: ['Низкий', 'Средний', 'Высокий', 'Специалист']
+  - name: requiredTools
+    type: array
+    items:
+      type: string
+    required: false
+    description: Список необходимых инструментов и приспособлений
+  - name: qualityRequirements
+    type: string
+    required: false
+    description: Требования к качеству выполнения операции
+  - name: safetyRequirements
+    type: string
+    required: false
+    description: Требования безопасности при выполнении операции
+  - name: isParallel
+    type: boolean
+    required: true
+    description: Может ли операция выполняться параллельно с другими
+  - name: isCritical
+    type: boolean
+    required: true
+    description: Является ли операция критической для процесса
+  - name: status
+    type: string
+    required: true
+    description: Статус операции
+    enum: ['Активная', 'Неактивная', 'В разработке']
+  - name: createdAt
+    type: DateTime
+    required: true
+    description: Дата и время создания операции
+  - name: updatedAt
+    type: DateTime
+    required: true
+    description: Дата и время обновления операции
+  - name: createdBy
+    type: UUID
+    required: true
+    description: Идентификатор пользователя, создавшего операцию
+  - name: logisticsOperations
+    type: array
+    items:
+      type: Routing
+    required: false
+    description: Список логистических операций, связанных с данной технологической операцией
+---
+
+## Overview
+OperationList представляет технологические операции, которые необходимо выполнить для производства изделия согласно техкарте. Каждая операция содержит детальную информацию о процессе, оборудовании, времени выполнения и требованиях.
+
+### Взаимосвязи:
+- **TechCard → OperationList**: Один ко многим - техкарта содержит множество технологических операций
+- **OperationList → Routing**: Один ко многим - технологическая операция может содержать множество логистических операций
+- **OperationList → Equipment**: Многие к одному - операция выполняется на конкретном оборудовании
+- **OperationList → Workplace**: Многие к одному - операция выполняется на конкретном рабочем месте
+
+<EntityPropertiesTable />

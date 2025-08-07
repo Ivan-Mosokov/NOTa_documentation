@@ -1,0 +1,207 @@
+---
+id: Routing
+name: Routing
+version: 0.0.1
+identifier: routingId
+summary: Маршрут логистических операций, описывающий связи между технологическими операциями и материалами. Каждая логистическая операция имеет вход и выход, которые могут ссылаться на OperationList или BOM.
+properties:
+  - name: routingId
+    type: UUID
+    required: true
+    description: Идентификатор логистической операции
+  - name: techCardId
+    type: UUID
+    required: true
+    description: Идентификатор техкарты, к которой относится маршрут
+  
+  - name: operationId
+    type: UUID
+    required: true
+    description: Идентификатор технологической операции, к которой относится логистическая операция
+
+  - name: routingNumber
+    type: integer
+    required: true
+    description: Порядковый номер логистической операции
+  - name: routingName
+    type: string
+    required: true
+    description: Название логистической операции
+  - name: routingDescription
+    type: string
+    required: false
+    description: Подробное описание логистической операции
+  - name: routingType
+    type: string
+    required: true
+    description: Тип логистической операции
+    enum: ['Передача', 'Транспортировка', 'Погрузка', 'Разгрузка', 'Складирование', 'Комплектация', 'Контроль', 'Другое']
+  - name: inputType
+    type: string
+    required: true
+    description: Тип входного объекта
+    enum: ['OperationList', 'BOM']
+  - name: inputId
+    type: UUID
+    required: true
+    description: Идентификатор входного объекта (OperationList или BOM)
+  - name: inputName
+    type: string
+    required: true
+    description: Название входного объекта
+  - name: inputQuantity
+    type: decimal
+    required: true
+    description: Количество входного объекта
+  - name: inputUnitOfMeasure
+    type: string
+    required: true
+    description: Единица измерения входного объекта
+  - name: outputType
+    type: string
+    required: true
+    description: Тип выходного объекта
+    enum: ['OperationList', 'BOM']
+  - name: outputId
+    type: UUID
+    required: true
+    description: Идентификатор выходного объекта (OperationList или BOM)
+  - name: outputName
+    type: string
+    required: true
+    description: Название выходного объекта
+  - name: outputQuantity
+    type: decimal
+    required: true
+    description: Количество выходного объекта
+  - name: outputUnitOfMeasure
+    type: string
+    required: true
+    description: Единица измерения выходного объекта
+  - name: sourceLocationId
+    type: UUID
+    required: true
+    description: Идентификатор исходного местоположения
+  - name: sourceLocationName
+    type: string
+    required: true
+    description: Название исходного местоположения
+  - name: sourceLocationType
+    type: string
+    required: true
+    description: Тип исходного местоположения
+    enum: ['Workplace', 'Buffer']
+  - name: destinationLocationId
+    type: UUID
+    required: true
+    description: Идентификатор целевого местоположения
+  - name: destinationLocationName
+    type: string
+    required: true
+    description: Название целевого местоположения
+  - name: destinationLocationType
+    type: string
+    required: true
+    description: Тип целевого местоположения
+    enum: ['Workplace', 'Buffer']
+  - name: transportMethod
+    type: string
+    required: true
+    description: Способ транспортировки
+    enum: ['Ручная переноска', 'Тележка', 'Погрузчик', 'Конвейер', 'Кран', 'Автомобиль', 'Другое']
+  - name: transportEquipment
+    type: string
+    required: false
+    description: Используемое транспортное оборудование
+  - name: distance
+    type: decimal
+    required: false
+    description: Расстояние транспортировки в метрах
+  - name: duration
+    type: decimal
+    required: true
+    description: Продолжительность логистической операции в минутах
+  - name: setupTime
+    type: decimal
+    required: true
+    description: Время подготовки к логистической операции в минутах
+  - name: laborHours
+    type: decimal
+    required: true
+    description: Трудоемкость логистической операции в часах
+  - name: costPerHour
+    type: decimal
+    required: true
+    description: Стоимость часа логистической операции
+  - name: operationCost
+    type: decimal
+    required: true
+    description: Стоимость логистической операции
+  - name: responsiblePersonId
+    type: UUID
+    required: false
+    description: Идентификатор ответственного лица
+  - name: responsiblePersonName
+    type: string
+    required: false
+    description: ФИО ответственного лица
+  - name: priority
+    type: string
+    required: true
+    description: Приоритет логистической операции
+    enum: ['Низкий', 'Средний', 'Высокий', 'Критический']
+  - name: isParallel
+    type: boolean
+    required: true
+    description: Может ли операция выполняться параллельно с другими
+  - name: isCritical
+    type: boolean
+    required: true
+    description: Является ли логистическая операция критической
+  - name: qualityRequirements
+    type: string
+    required: false
+    description: Требования к качеству выполнения логистической операции
+  - name: safetyRequirements
+    type: string
+    required: false
+    description: Требования безопасности при выполнении логистической операции
+  - name: specialInstructions
+    type: string
+    required: false
+    description: Специальные инструкции для выполнения операции
+  - name: status
+    type: string
+    required: true
+    description: Статус логистической операции
+    enum: ['Планируется', 'В работе', 'Завершена', 'Отменена', 'Приостановлена']
+  - name: createdAt
+    type: DateTime
+    required: true
+    description: Дата и время создания логистической операции
+  - name: updatedAt
+    type: DateTime
+    required: true
+    description: Дата и время обновления логистической операции
+  - name: createdBy
+    type: UUID
+    required: true
+    description: Идентификатор пользователя, создавшего логистическую операцию
+---
+
+## Overview
+Routing представляет логистические операции, которые описывают перемещение объектов между технологическими операциями и материалами. Каждая логистическая операция имеет четко определенные входы и выходы, которые могут ссылаться на технологические операции (OperationList) или материалы (BOM).
+
+### Взаимосвязи:
+- **TechCard → Routing**: Один ко многим - техкарта содержит множество логистических операций
+- **OperationList → Routing**: Один ко многим - технологическая операция может содержать множество логистических операций
+- **Routing → OperationList**: Многие к одному - логистическая операция связана с конкретной технологической операцией
+- **Routing → BOM**: Многие к одному - логистическая операция может работать с материалами
+- **Routing → Workplace/Buffer**: Многие к одному - логистическая операция связывает рабочие места и буферы
+
+### Бизнес-правила:
+- Вход и выход логистической операции могут ссылаться только на OperationList или BOM
+- Каждая логистическая операция должна иметь четко определенные исходное и целевое местоположения
+- Логистические операции формируют сетевой граф производственного процесса
+
+<EntityPropertiesTable />
