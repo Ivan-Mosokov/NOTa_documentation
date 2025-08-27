@@ -1,0 +1,22 @@
+---
+id: "StepLogistic"
+name: "StepLogistic"
+version: "1.0.0"
+summary: "Represents a step within a logistic operation"
+aggregateRoot: true
+identifier: "step_logistic_id"
+
+properties:
+  - name: "step_logistic_id"
+    type: "string"
+    required: true
+    description: "Primary key of StepLogistic"
+---
+
+Шаг логистической операции — минимальное действие в процессе перемещения. Бывает двух типов:
+
+- **Акт** — выполняется один раз для всей партии (например, погрузка контейнера).
+- **Цикл** — повторяется для каждого изделия или группы изделий (например, перевозка деталей поштучно).
+
+### Entity Properties
+<EntityPropertiesTable />

@@ -1,0 +1,32 @@
+---
+id: "WorkOrder"
+name: "WorkOrder"
+version: "1.0.0"
+summary: "Represents a production work order"
+aggregateRoot: true
+identifier: "work_order_id"
+
+properties:
+  - name: "work_order_id"
+    type: "string"
+    required: true
+    description: "Primary key of WorkOrder"
+
+  - name: "tech_prep_id"
+    type: "string"
+    required: true
+    description: "Reference to TechPrep"
+    references: "TechPrep"
+    referencesIdentifier: "tech_prep_id"
+    relationType: "many-to-one"
+---
+
+Производственный заказ (WorkOrder) — документ, который фиксирует заказ на выпуск продукции. Список этих заказов формируют план производства.
+
+- Каждый заказ состоит из одной или нескольких позиций.
+- Позиции полностью соответствуют заказу клиента (SalesOrder) и указывают количество изделий.
+- Каждая позиция — это объект труда типа _Finished Product_.
+- К каждому изделию назначается техподготовка (TechPrep), по которой будет строиться процесс.
+
+### Entity Properties
+<EntityPropertiesTable />

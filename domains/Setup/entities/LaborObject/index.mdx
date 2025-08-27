@@ -1,0 +1,40 @@
+---
+id: "LaborObject"
+name: "LaborObject"
+version: "1.0.0"
+summary: "Represents a material object that undergoes processing or movement operations"
+aggregateRoot: true
+identifier: "labor_object_id"
+
+properties:
+  - name: "labor_object_id"
+    type: "string"
+    required: true
+    description: "Primary key of LaborObject"
+
+  - name: "supplier_id"
+    type: "string"
+    required: false
+    description: "Reference to Supplier"
+    references: "Supplier"
+    referencesIdentifier: "supplier_id"
+    relationType: "many-to-one"
+
+  - name: "warehouse_id"
+    type: "string"
+    required: false
+    description: "Reference to Warehouse"
+    references: "Warehouse"
+    referencesIdentifier: "warehouse_id"
+    relationType: "many-to-one"
+---
+
+Объект труда — это материальный объект, над которым выполняются операции обработки или перемещения. Типы объектов:
+
+- **Сырьё** (Raw Material).
+- **Полуфабрикаты, WIP** (Work in Process).
+- **Комплектующие** (Components).
+- **Готовая продукция** (Finished Product).
+
+### Entity Properties
+<EntityPropertiesTable />

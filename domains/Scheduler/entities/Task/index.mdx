@@ -1,0 +1,64 @@
+---
+id: "Task"
+name: "Task"
+version: "1.0.0"
+summary: "Represents a task unit for planning and execution"
+aggregateRoot: false
+identifier: "task_id"
+
+properties:
+  - name: "task_id"
+    type: "string"
+    required: true
+    description: "Primary key of Task"
+
+  - name: "operator_id"
+    type: "string"
+    required: true
+    description: "Reference to Operator"
+    references: "Operator"
+    referencesIdentifier: "operator_id"
+    relationType: "many-to-one"
+
+  - name: "process_plan_id"
+    type: "string"
+    required: false
+    description: "Reference to ProcessPlan"
+    references: "ProcessPlan"
+    referencesIdentifier: "process_plan_id"
+    relationType: "many-to-one"
+
+  - name: "step_plan_id"
+    type: "string"
+    required: false
+    description: "Reference to StepPlan"
+    references: "StepPlan"
+    referencesIdentifier: "step_plan_id"
+    relationType: "many-to-one"
+
+  - name: "routing_plan_id"
+    type: "string"
+    required: false
+    description: "Reference to RoutingPlan"
+    references: "RoutingPlan"
+    referencesIdentifier: "process_route_id"
+    relationType: "many-to-one"
+
+  - name: "bom_plan_id"
+    type: "string"
+    required: false
+    description: "Reference to BOMplan"
+    references: "BOMplan"
+    referencesIdentifier: "bom_plan_id"
+    relationType: "many-to-one"
+---
+
+Задача (Task) — единица планирования и исполнения производственного процесса.
+
+- Формируется из одной или нескольких технологических операций.
+- Привязана к рабочему центру, исполнителю или участку.
+- Используется при календарном и диспетчерском планировании.
+- Задача определяет, что именно и в какой срок нужно выполнить.
+
+### Entity Properties
+<EntityPropertiesTable />

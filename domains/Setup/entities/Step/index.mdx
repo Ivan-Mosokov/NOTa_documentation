@@ -1,0 +1,54 @@
+---
+id: "Step"
+name: "Step"
+version: "1.0.0"
+summary: "Represents a step within a technological operation"
+aggregateRoot: true
+identifier: "step_id"
+
+properties:
+  - name: "step_id"
+    type: "string"
+    required: true
+    description: "Primary key of Step"
+
+  - name: "operation_id"
+    type: "string"
+    required: true
+    description: "Reference to Operation"
+    references: "Operation"
+    referencesIdentifier: "operation_id"
+    relationType: "many-to-one"
+
+  - name: "equipment_id"
+    type: "string"
+    required: false
+    description: "Reference to Equipment used in step"
+    references: "Equipment"
+    referencesIdentifier: "equipment_id"
+    relationType: "many-to-one"
+
+  - name: "fixture_id"
+    type: "string"
+    required: false
+    description: "Reference to Fixture used in step"
+    references: "Fixture"
+    referencesIdentifier: "fixture_id"
+    relationType: "many-to-one"
+
+  - name: "operator_id"
+    type: "string"
+    required: true
+    description: "Reference to Operator performing the step"
+    references: "Operator"
+    referencesIdentifier: "operator_id"
+    relationType: "many-to-one"
+---
+
+Шаг операции — минимальное действие в составе технологической операции. Бывает двух типов:
+
+- **Акт** — выполняется один раз для всей партии (например, подготовка оборудования).
+- **Цикл** — повторяется для каждого изделия в партии (например, обработка каждой детали).
+
+### Entity Properties
+<EntityPropertiesTable />

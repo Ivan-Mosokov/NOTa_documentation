@@ -1,0 +1,35 @@
+---
+id: "TechProcess"
+name: "TechProcess"
+version: "1.0.0"
+summary: "Represents a technological process sequence"
+aggregateRoot: false
+identifier: "tech_process_id"
+
+properties:
+  - name: "tech_process_id"
+    type: "string"
+    required: true
+    description: "Primary key of TechProcess"
+
+  - name: "tech_card_id"
+    type: "string"
+    required: true
+    description: "Reference to TechCard"
+    references: "TechCard"
+    referencesIdentifier: "tech_card_id"
+    relationType: "many-to-one"
+
+  - name: "operation_id"
+    type: "string"
+    required: true
+    description: "Reference to Operation"
+    references: "Operation"
+    referencesIdentifier: "operation_id"
+    relationType: "many-to-one"
+---
+
+Техпроцесс — это последовательность технологических операций для получения готового изделия. Он задаёт порядок выполнения операций и определяет, как сырьё превращается в продукт.
+
+### Entity Properties
+<EntityPropertiesTable />

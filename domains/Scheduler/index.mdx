@@ -3,7 +3,7 @@
 id: Scheduler
 
 # Display name of the domain, rendered in EventCatalog
-name: Scheduler
+name: 3 Scheduler
 
 # Version of the domain
 version: 0.0.1
@@ -12,11 +12,20 @@ version: 0.0.1
 summary: |
   Domain that contains scheduler related information
 
+entities: 
+ - id: Task
+ - id: BOMplan
+ - id: RoutingPlan
+ - id: StepPlan
+ - id: ProcessPlan
+ - id: WorkOrder
 
 # Optional services. Groups services into this domain.
 services:
-    - id: SchedulerService
-      version: 0.0.1
+    - id: ResourceLoadingPlanService
+    - id: SupplyPlanService
+    - id: TaskConfigService
+    - id: OrchestrationService
 
 # Optional badges, rendered to UI by EventCatalog
 badges:

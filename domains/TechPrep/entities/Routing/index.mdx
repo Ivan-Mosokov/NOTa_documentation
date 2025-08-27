@@ -1,0 +1,82 @@
+---
+id: "Routing"
+name: "Routing"
+version: "1.0.0"
+summary: "Represents a sequence of logistic operations"
+aggregateRoot: false
+identifier: "routing_id"
+
+properties:
+  - name: "routing_id"
+    type: "string"
+    required: true
+    description: "Primary key of Routing"
+
+  - name: "tech_card_id"
+    type: "string"
+    required: true
+    description: "Reference to TechCard"
+    references: "TechCard"
+    referencesIdentifier: "tech_card_id"
+    relationType: "many-to-one"
+
+  - name: "logistic_operation_id"
+    type: "string"
+    required: true
+    description: "Reference to LogisticOperation"
+    references: "LogisticOperation"
+    referencesIdentifier: "logistic_operation_id"
+    relationType: "many-to-one"
+
+  - name: "path_id"
+    type: "string"
+    required: true
+    description: "Reference to Path"
+    references: "Path"
+    referencesIdentifier: "path_id"
+    relationType: "many-to-one"
+
+  - name: "input_tech_process_id"
+    type: "string"
+    required: false
+    description: "Input reference to TechProcess"
+    references: "TechProcess"
+    referencesIdentifier: "tech_process_id"
+    relationType: "many-to-one"
+
+  - name: "output_bom_id"
+    type: "string"
+    required: false
+    description: "Output reference to BOM"
+    references: "BOM"
+    referencesIdentifier: "bom_id"
+    relationType: "many-to-one"
+
+  - name: "input_bom_id"
+    type: "string"
+    required: false
+    description: "Input reference to BOM"
+    references: "BOM"
+    referencesIdentifier: "bom_id"
+    relationType: "many-to-one"
+
+  - name: "output_tech_process_id"
+    type: "string"
+    required: false
+    description: "Output reference to TechProcess"
+    references: "TechProcess"
+    referencesIdentifier: "tech_process_id"
+    relationType: "many-to-one"
+---
+
+Маршрут (Routing) — это последовательность логистических операций. Он описывает, откуда брать объекты труда, куда их перемещать и каким способом. Маршрут связывает рабочие места, склады и внешние точки в единую систему перемещений.
+
+Маршрут описывается через два поля: **input** (начальная точка) и **output** (конечная точка). Допустимо только два типа связей:
+
+- если в _input_ указан `tech_process_id`, то в _output_ может быть только `bom_id`;
+- если в _input_ указан `bom_id`, то в _output_ может быть только `tech_process_id`.
+
+Так задаётся последовательность и технологического процесса а также учет промежуточных состояний объектов труда.
+
+### Entity Properties
+<EntityPropertiesTable />

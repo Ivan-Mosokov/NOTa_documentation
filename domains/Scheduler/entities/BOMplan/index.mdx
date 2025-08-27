@@ -1,0 +1,56 @@
+---
+id: "BOMplan"
+name: "BOMplan"
+version: "1.0.0"
+summary: "Represents a material plan for production orders"
+aggregateRoot: false
+identifier: "bom_plan_id"
+
+properties:
+  - name: "bom_plan_id"
+    type: "string"
+    required: true
+    description: "Primary key of BOMplan"
+
+  - name: "work_order_id"
+    type: "string"
+    required: true
+    description: "Reference to WorkOrder"
+    references: "WorkOrder"
+    referencesIdentifier: "work_order_id"
+    relationType: "many-to-one"
+
+  - name: "labor_object_id"
+    type: "string"
+    required: true
+    description: "Reference to LaborObject"
+    references: "LaborObject"
+    referencesIdentifier: "labor_object_id"
+    relationType: "many-to-one"
+
+  - name: "buffer_id"
+    type: "string"
+    required: false
+    description: "Reference to Buffer"
+    references: "Buffer"
+    referencesIdentifier: "buffer_id"
+    relationType: "many-to-one"
+
+  - name: "workplace_cache_id"
+    type: "string"
+    required: false
+    description: "Reference to WorkplaceCache"
+    references: "WorkplaceCache"
+    referencesIdentifier: "workplace_cache_id"
+    relationType: "many-to-one"
+---
+
+Материальный план (BOMplan) — перечень всех объектов труда, необходимых для выполнения заказа.
+
+- Формируется на основе BOM из техкарты.
+- Содержит полный список сырья, комплектующих и полуфабрикатов.
+- Определяет, какие материалы и в каком количестве нужно подготовить.
+- Содержит информацию о местонахождении объекта труда (буфер или кэш)
+
+### Entity Properties
+<EntityPropertiesTable />

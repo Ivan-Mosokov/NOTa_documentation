@@ -1,0 +1,57 @@
+# Шаблон для иконок в MDX
+
+## Прямое использование HTML (рекомендуемый)
+
+```html
+<img src="/icon-name.svg" alt="Icon description" width="24" height="24" style="display: inline-block; vertical-align: middle;" />
+```
+
+## Встроенный SVG
+
+```html
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Вставьте содержимое SVG файла здесь -->
+</svg>
+```
+
+## React компонент (экспериментально)
+
+```jsx
+<IconComponent name="icon-name" width="24" height="24" />
+```
+
+## Примеры использования
+
+### Иконка Duplicate24
+```html
+<img src="/Duplicate24.svg" alt="Duplicate Icon" width="24" height="24" style="display: inline-block; vertical-align: middle;" />
+```
+
+### Иконка plus24
+```html
+<img src="/plus24.svg" alt="Plus Icon" width="32" height="32" style="display: inline-block; vertical-align: middle;" />
+```
+
+## Стили для иконок
+
+```css
+/* Базовые стили для иконок */
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Иконки с отступом */
+.icon-with-margin {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 4px;
+}
+
+/* Цветные иконки */
+.icon-colored {
+  display: inline-block;
+  vertical-align: middle;
+  filter: brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+}
+```

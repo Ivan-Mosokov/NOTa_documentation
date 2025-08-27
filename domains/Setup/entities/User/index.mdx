@@ -1,0 +1,22 @@
+---
+id: "User"
+name: "User"
+version: "1.0.0"
+summary: "Represents a user (employee) of the enterprise"
+aggregateRoot: true
+identifier: "user_id"
+
+properties:
+  - name: "user_id"
+    type: "string"
+    required: true
+    description: "Primary key of User"
+---
+
+Пользователь (user) — сотрудник предприятия.
+
+- Может быть импортирован из ERP или создан вручную в системе.
+- Привязывается к оператору, если он выполняет производственные операции.
+
+### Entity Properties
+<EntityPropertiesTable />

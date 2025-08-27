@@ -1,0 +1,27 @@
+---
+id: "Operation"
+name: "Operation"
+version: "1.0.0"
+summary: "Represents a technological operation"
+aggregateRoot: true
+identifier: "operation_id"
+
+properties:
+  - name: "operation_id"
+    type: "string"
+    required: true
+    description: "Primary key of Operation"
+
+  - name: "workplace_id"
+    type: "string"
+    required: true
+    description: "Reference to Workplace where operation is performed"
+    references: "Workplace"
+    referencesIdentifier: "workplace_id"
+    relationType: "many-to-one"
+---
+
+Технологическая операция — это завершённая часть технологического процесса. Она имеет конкретную цель и результат, выполняется на рабочем месте или оборудовании. Операция состоит из последовательности шагов.
+
+### Entity Properties
+<EntityPropertiesTable />

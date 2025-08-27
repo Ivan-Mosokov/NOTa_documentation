@@ -1,0 +1,73 @@
+---
+id: "RoutingPlan"
+name: "RoutingPlan"
+version: "1.0.0"
+summary: "Represents a routing plan for production orders"
+aggregateRoot: false
+identifier: "process_route_id"
+
+properties:
+  - name: "process_route_id"
+    type: "string"
+    required: true
+    description: "Primary key of RoutingPlan"
+
+  - name: "work_order_id"
+    type: "string"
+    required: true
+    description: "Reference to WorkOrder"
+    references: "WorkOrder"
+    referencesIdentifier: "work_order_id"
+    relationType: "many-to-one"
+
+  - name: "logistic_operation_id"
+    type: "string"
+    required: true
+    description: "Reference to LogisticOperation"
+    references: "LogisticOperation"
+    referencesIdentifier: "logistic_operation_id"
+    relationType: "many-to-one"
+
+  - name: "input_process_plan_id"
+    type: "string"
+    required: false
+    description: "Input reference to ProcessPlan"
+    references: "ProcessPlan"
+    referencesIdentifier: "process_plan_id"
+    relationType: "many-to-one"
+
+  - name: "output_bom_plan_id"
+    type: "string"
+    required: false
+    description: "Output reference to BOMplan"
+    references: "BOMplan"
+    referencesIdentifier: "bom_plan_id"
+    relationType: "many-to-one"
+
+  - name: "input_bom_plan_id"
+    type: "string"
+    required: false
+    description: "Input reference to BOMplan"
+    references: "BOMplan"
+    referencesIdentifier: "bom_plan_id"
+    relationType: "many-to-one"
+
+  - name: "output_process_plan_id"
+    type: "string"
+    required: false
+    description: "Output reference to ProcessPlan"
+    references: "ProcessPlan"
+    referencesIdentifier: "process_plan_id"
+    relationType: "many-to-one"
+---
+
+RoutingPlan — это последовательность логистических операций необходимых для выполнения заказов на производство. Он описывает, откуда брать объекты труда, куда их перемещать и каким способом. Маршрут связывает рабочие места, склады и внешние точки в единую систему перемещений.
+
+Маршрут описывается через два поля: **input** (начальная точка) и **output** (конечная точка). Допустимо только два типа связей:
+- если в _input_ указан `tech_process_plan_id`, то в _output_ может быть только `bom_plan_id`;
+- если в _input_ указан `bom_plan_id`, то в _output_ может быть только `tech_process_process_id`.
+
+Так задаётся направление перемещения объектов труда. Объекты в технологической операции по умолчанию находятся в кэше, а `bom_plan_id` фиксирует их положение в буфере или том же кэше.
+
+### Entity Properties
+<EntityPropertiesTable />

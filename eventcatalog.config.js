@@ -37,6 +37,11 @@ export default {
       type: 'LIST_VIEW'
     },
   },
+  // MDX configuration for React components
+  mdx: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
   // required random generated id used by eventcatalog
   cId: '53905bb5-8507-4bdd-9016-df6fad3b1f9f'
 }

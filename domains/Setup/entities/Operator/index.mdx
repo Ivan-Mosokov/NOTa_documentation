@@ -1,0 +1,38 @@
+---
+id: "Operator"
+name: "Operator"
+version: "1.0.0"
+summary: "Represents an operator who can be a human or robot"
+aggregateRoot: true
+identifier: "operator_id"
+
+properties:
+  - name: "operator_id"
+    type: "string"
+    required: true
+    description: "Primary key of Operator"
+
+  - name: "user_id"
+    type: "string"
+    required: false
+    description: "Reference to User (if operator is human)"
+    references: "User"
+    referencesIdentifier: "user_id"
+    relationType: "many-to-one"
+
+  - name: "robot_id"
+    type: "string"
+    required: false
+    description: "Reference to Robot (if operator is robot)"
+    references: "Robot"
+    referencesIdentifier: "robot_id"
+    relationType: "many-to-one"
+---
+
+Оператор — исполнитель производственных задач. Это может быть человек или робот.
+
+- Выполняет операции и задачи из производственного плана.
+- Является связующим звеном между задачами и конкретным исполнителем.
+
+### Entity Properties
+<EntityPropertiesTable />

@@ -1,0 +1,43 @@
+---
+id: "StepPlan"
+name: "StepPlan"
+version: "1.0.0"
+summary: "Represents a step plan for production orders"
+aggregateRoot: false
+identifier: "step_plan_id"
+
+properties:
+  - name: "step_plan_id"
+    type: "string"
+    required: true
+    description: "Primary key of StepPlan"
+
+  - name: "work_order_id"
+    type: "string"
+    required: true
+    description: "Reference to WorkOrder"
+    references: "WorkOrder"
+    referencesIdentifier: "work_order_id"
+    relationType: "many-to-one"
+
+  - name: "process_plan_id"
+    type: "string"
+    required: true
+    description: "Reference to ProcessPlan"
+    references: "ProcessPlan"
+    referencesIdentifier: "process_plan_id"
+    relationType: "many-to-one"
+
+  - name: "step_id"
+    type: "string"
+    required: true
+    description: "Reference to Step"
+    references: "Step"
+    referencesIdentifier: "step_id"
+    relationType: "many-to-one"
+---
+
+Это последовательность всех шагов технологических операций необходимых для выполнения заказа производству.
+
+### Entity Properties
+<EntityPropertiesTable />

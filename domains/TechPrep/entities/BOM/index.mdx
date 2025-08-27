@@ -1,0 +1,27 @@
+---
+id: "BOM"
+name: "BOM"
+version: "1.0.0"
+summary: "Represents Bill of Materials structure"
+aggregateRoot: true
+identifier: "bom_id"
+
+properties:
+  - name: "bom_id"
+    type: "string"
+    required: true
+    description: "Primary key of BOM"
+
+  - name: "tech_card_id"
+    type: "string"
+    required: true
+    description: "Reference to TechCard"
+    references: "TechCard"
+    referencesIdentifier: "tech_card_id"
+    relationType: "many-to-one"
+---
+
+BOM (Bill of Materials, спецификация) — это структура изделия. В ней перечислены все материалы, комплектующие и полуфабрикаты, необходимые для его производства. BOM определяет состав изделия и количество каждого элемента.
+
+### Entity Properties
+<EntityPropertiesTable />

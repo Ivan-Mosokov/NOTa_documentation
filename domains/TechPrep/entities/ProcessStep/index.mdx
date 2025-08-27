@@ -1,0 +1,43 @@
+---
+id: "ProcessStep"
+name: "ProcessStep"
+version: "1.0.0"
+summary: "Represents a step within a technological process"
+aggregateRoot: false
+identifier: "process_step_id"
+
+properties:
+  - name: "process_step_id"
+    type: "string"
+    required: true
+    description: "Primary key of ProcessStep"
+
+  - name: "tech_card_id"
+    type: "string"
+    required: true
+    description: "Reference to TechCard"
+    references: "TechCard"
+    referencesIdentifier: "tech_card_id"
+    relationType: "many-to-one"
+
+  - name: "tech_process_id"
+    type: "string"
+    required: true
+    description: "Reference to TechProcess"
+    references: "TechProcess"
+    referencesIdentifier: "tech_process_id"
+    relationType: "many-to-one"
+
+  - name: "step_id"
+    type: "string"
+    required: true
+    description: "Reference to Step"
+    references: "Step"
+    referencesIdentifier: "step_id"
+    relationType: "many-to-one"
+---
+
+Это последовательность всех шагов технологических операций для получения готового изделия. Из суммы продолжительности шагов рассчитывается продолжительность всей технологической операции.
+
+### Entity Properties
+<EntityPropertiesTable />

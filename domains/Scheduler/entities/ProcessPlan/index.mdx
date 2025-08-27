@@ -1,0 +1,39 @@
+---
+id: "ProcessPlan"
+name: "ProcessPlan"
+version: "1.0.0"
+summary: "Represents a process plan for production orders"
+aggregateRoot: false
+identifier: "process_plan_id"
+
+properties:
+  - name: "process_plan_id"
+    type: "string"
+    required: true
+    description: "Primary key of ProcessPlan"
+
+  - name: "work_order_id"
+    type: "string"
+    required: true
+    description: "Reference to WorkOrder"
+    references: "WorkOrder"
+    referencesIdentifier: "work_order_id"
+    relationType: "many-to-one"
+
+  - name: "operation_id"
+    type: "string"
+    required: true
+    description: "Reference to Operation"
+    references: "Operation"
+    referencesIdentifier: "operation_id"
+    relationType: "many-to-one"
+---
+
+Процессный план (ProcessPlan) — список всех операций, необходимых для выполнения производственного плана.
+
+- Включает технологические и логистические операции, которые подтягиваются из техкарты.
+- Описывает порядок их выполнения в рамках заказа.
+- Используется для планирования, распределения и контроля операций.
+
+### Entity Properties
+<EntityPropertiesTable />

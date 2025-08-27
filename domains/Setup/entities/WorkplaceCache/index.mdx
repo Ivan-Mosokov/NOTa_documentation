@@ -1,0 +1,27 @@
+---
+id: "WorkplaceCache"
+name: "WorkplaceCache"
+version: "1.0.0"
+summary: "Represents a work buffer for temporary storage of parts near workplace"
+aggregateRoot: true
+identifier: "workplace_cache_id"
+
+properties:
+  - name: "workplace_cache_id"
+    type: "string"
+    required: true
+    description: "Primary key of WorkplaceCache"
+
+  - name: "workplace_id"
+    type: "string"
+    required: true
+    description: "Reference to Workplace"
+    references: "Workplace"
+    referencesIdentifier: "workplace_id"
+    relationType: "many-to-one"
+---
+
+Рабочий буфер (WorkplaceCache) — место временного хранения деталей у рабочего центра. В нём находятся объекты, которые будут использоваться в текущей или ближайшей операции.
+
+### Entity Properties
+<EntityPropertiesTable />
